@@ -2,7 +2,12 @@ import { getSuggestedQuery } from '@testing-library/react'
 import React from 'react'
 import SearchBar from "material-ui-search-bar";
 
+
+
 const Search = ({query, setQuery, handleSubmit}) => {
+
+
+
     return (
         <section style={{padding: '3rem'}}>
                     <SearchBar
