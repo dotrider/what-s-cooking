@@ -32,13 +32,13 @@ const PaginationComp = ({
         pageNumbers.push(i)
     }
     
-    
+    console.log(pageNumbers,'pageN')
   return (
     <div className={classes.root}>
         <Typography>Page: </Typography>
         <Pagination 
                   count={totalPages} 
-                  page={currentPage} 
+                  page={+currentPage} 
                   onChange={handleChange} 
                   style={{
                         margin: '0 auto',

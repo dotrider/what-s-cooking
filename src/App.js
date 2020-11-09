@@ -16,6 +16,7 @@ function App() {
   const [ recipes, setRecipes ] = useState([])
   const [ recipesPerPage, setRecipesPerPage ] = useState(15)
   const [ currentPage, setCurrentPage ] = useState(1);
+  const [ isLoading, setIsLoading ] = useState(false)
 
   
   const url = `https://api.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&from=0&to=100`
@@ -24,22 +25,30 @@ function App() {
 
 
 const getData = async() => { 
+  setIsLoading(true)
   const res = await axios.get(url)
   setRecipes(res.data.hits)
+  setIsLoading(false)
 }
 
 useEffect(() => {
   getData()
-}, [])
+}, [currentPage])
 
 
 const handleSubmit = () => {
   getData()
 }
 
-const handleChange = (e, value) => {
+const handleChange = (value) => {
+  // console.log('handleClick', e, value)
   setCurrentPage({value});
 };
+
+
+if(isLoading){
+  return <h2>loading...</h2>
+}
 
 
 //Get current recipes - pagination purposes
