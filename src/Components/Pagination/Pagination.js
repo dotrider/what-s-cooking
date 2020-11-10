@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Pagination from '@material-ui/lab/Pagination';
+import { NextWeek } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +18,9 @@ const PaginationComp = ({
   totalRecipes, 
   handleChange, 
   currentPage, 
-  recipesPerPage }) => {
+  recipesPerPage,
+prev,
+next }) => {
 
 
   const classes = useStyles();
@@ -44,6 +47,9 @@ const PaginationComp = ({
                         margin: '0 auto',
                         maxWidth: 500
                     }}/>
+
+                    <button onClick={() => next()}>Next</button>
+                    <button onClick={() => prev()}>Prev</button>
     </div>
   );
 }
